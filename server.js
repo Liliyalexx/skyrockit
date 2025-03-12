@@ -9,6 +9,8 @@ const session = require('express-session');
 const authController = require('./controllers/auth.js');
 const isSignIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
+const applicationsController = require('./controllers/applications.js');
+
 const port = process.env.PORT ? process.env.PORT : '3000';
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -43,7 +45,7 @@ app.use('/auth', authController);
 
 app.use(isSignIn);
 //this middleware runs after auth routes - the user need to authenticate before accessing the routes below
-
+app.use('/users/:userId/applications', applicationsController);
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
