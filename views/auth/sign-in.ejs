@@ -6,12 +6,14 @@
   <title>Sign In</title>
 </head>
 <body>
+  <%- include('../partials/_navbar.ejs') %>
   <h1>Sign in</h1>
   <form action="/auth/sign-in" method="POST">
+    <!-- TODO Remove test cresd -->
     <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
+    <input value="liliyaF" type="text" name="username" id="username" required />
     <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
+    <input value="12345678" type="password" name="password" id="password" required />
     <button type="submit">Sign in</button>
   </form>
 </body>
